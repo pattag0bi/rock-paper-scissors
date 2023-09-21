@@ -1,24 +1,3 @@
-// let gameWinner;
-// let i = 1;
-// function game() {
-//   let leader = Math.max(computerScore, playerScore);
-//   // for (let i = 1; i < 6; i++) {
-//   while (leader < 6) {
-//     console.log(`round number : ${i}`);
-//     let input = prompt("enter your choice");
-//     playerSelection = input.toLowerCase();
-//     playRound(getComputerChoice(), playerSelection);
-//     i++;
-//   }
-
-//   if (playerScore == 5) gameWinner = "player";
-//   else if (computerScore == 5) gameWinner = "computer";
-//   else gameWinner = "draw";
-
-//   console.log(`THE WINNER IS ${gameWinner}`);
-//   return 0;
-// }
-
 "use strict";
 const headerEl = document.querySelector(".header");
 const scoreInfo = document.querySelector(".score-info");
