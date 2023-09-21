@@ -105,11 +105,3 @@ body {
   background-color: black;
   opacity: 0.6;
 }
-
-.active {
-  display: block;
-}
-
-.hidden {
-  display: none;
-}
