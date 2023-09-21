@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style src="style.css"></style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <script src="script.js"></script>
   <body>
@@ -19,10 +31,22 @@
       <div class="player-score-box">⍰</div>
       <div class="computer-score-box">⍰</div>
     </div>
-    <div class="choice-buttons">
-      <button class="rock-button">🪨</button>
-      <button class="paper-button">📄</button>
-      <button class="scissor-button">✂️</button>
+    <div class="score-tracker">
+      <p class="player-score">player: 0</p>
+      <p class="computer-score">computer: 0</p>
     </div>
+    <div class="choice-buttons">
+      <button class="rock button"><div class="sign">🪨</div></button>
+      <button class="paper button"><div class="sign">📄</div></button>
+      <button class="scissor button">
+        <div class="sign">✂️</div>
+      </button>
+    </div>
+
+    <div class="modal">
+      <p class="endgame-message"></p>
+      <button class="btn-restart">play again</button>
+    </div>
+    <div class="overlay"></div>
   </body>
 </html>

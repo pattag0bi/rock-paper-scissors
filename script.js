@@ -12,8 +12,8 @@ function getComputerChoice() {
 
   return parameter;
 }
-let playerScore = 0;
-let computerScore = 0;
+let playerScore;
+let computerScore;
 let roundWinner;
 
 function playRound(computerSelection, playerSelection) {
