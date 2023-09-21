@@ -57,18 +57,24 @@ function playRound(computerSelection, playerSelection) {
   console.log(`player score: ${playerScore}, computer score: ${computerScore}`);
 }
 let gameWinner;
+let i = 1;
 function game() {
-  for (let i = 1; i < 6; i++) {
+  let leader = Math.max(computerScore, playerScore);
+  // for (let i = 1; i < 6; i++) {
+  while (leader < 6) {
     console.log(`round number : ${i}`);
-    playRound(getComputerChoice(), "rock");
+    let input = prompt("enter your choice");
+    playerSelection = input.toLowerCase();
+    playRound(getComputerChoice(), playerSelection);
+    i++;
   }
 
-  if (playerScore > computerScore) gameWinner = "player";
-  else if (computerScore > playerScore) gameWinner = "computer";
+  if (playerScore == 5) gameWinner = "player";
+  else if (computerScore == 5) gameWinner = "computer";
   else gameWinner = "draw";
 
   console.log(`THE WINNER IS ${gameWinner}`);
   return 0;
 }
 
-console.log(game());
+//console.log(game());
