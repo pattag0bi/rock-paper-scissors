@@ -1,3 +1,64 @@
+// function playRound(computerSelection, playerSelection) {
+//   console.log(
+//     `playerSelection: ${playerSelection}, computerSelection ${computerSelection}`
+//   );
+//   if (computerSelection == "rock") {
+//     if (playerSelection == "rock") console.log("round draw");
+//     else if ((playerSelection = "paper")) {
+//       playerScore += 1;
+//       roundWinner = "player";
+//       console.log(roundWinner + " " + "wins");
+//     } else if ((playerSelection = "scissors")) {
+//       computerScore += 1;
+//       roundWinner = "computer";
+//       console.log(roundWinner + " " + "wins");
+//     }
+//   } else if (computerSelection == "paper") {
+//     if (playerSelection == "rock") {
+//       computerScore += 1;
+//       roundWinner = "computer";
+//       console.log(roundWinner + " " + "wins");
+//     } else if ((playerSelection = "paper")) console.log("round draw");
+//     else if ((playerSelection = "scissors")) {
+//       playerScore += 1;
+//       roundWinner = "player";
+//       console.log(roundWinner + " " + "wins");
+//     }
+//   } else if (computerSelection == "scissors") {
+//     if (playerSelection == "rock") {
+//       playerScore += 1;
+//       roundWinner = "player";
+//       console.log(roundWinner + " " + "wins");
+//     } else if ((playerSelection = "paper")) {
+//       computerScore += 1;
+//       roundWinner = "computer";
+//       console.log(roundWinner + " " + "wins");
+//     } else if ((playerSelection = "scissors")) console.log("round draw");
+//   }
+
+//   console.log(`player score: ${playerScore}, computer score: ${computerScore}`);
+// }
+// let gameWinner;
+// let i = 1;
+// function game() {
+//   let leader = Math.max(computerScore, playerScore);
+//   // for (let i = 1; i < 6; i++) {
+//   while (leader < 6) {
+//     console.log(`round number : ${i}`);
+//     let input = prompt("enter your choice");
+//     playerSelection = input.toLowerCase();
+//     playRound(getComputerChoice(), playerSelection);
+//     i++;
+//   }
+
+//   if (playerScore == 5) gameWinner = "player";
+//   else if (computerScore == 5) gameWinner = "computer";
+//   else gameWinner = "draw";
+
+//   console.log(`THE WINNER IS ${gameWinner}`);
+//   return 0;
+// }
+
 "use strict";
 const headerEl = document.querySelector(".header");
 const scoreInfo = document.querySelector(".score-info");
@@ -21,8 +82,8 @@ function init() {
   playerScore = 0;
   computerScore = 0;
 
-  playerScoreEl.textContent = 0;
-  computerScoreEl.textContent = 0;
+  playerScoreEl.textContent = `player : 0`;
+  computerScoreEl.textContent = `computer : 0`;
   playerWeapon.textContent = "⍰";
   computerWeapon.textContent = "⍰";
 
@@ -64,63 +125,60 @@ scissorBtn.addEventListener("click", function () {
   playRound(getComputerChoice(), "scissors");
 });
 
+init();
+
 function playRound(computerSelection, playerSelection) {
   console.log(
     `playerSelection: ${playerSelection}, computerSelection ${computerSelection}`
   );
   if (computerSelection == "rock") {
-    if (playerSelection == "rock") console.log("round draw");
-    else if ((playerSelection = "paper")) {
+    if (playerSelection == "rock") {
+      scoreInfo.textContent = "its a tie!";
+      scoreDesc.textContent = "rock ties with rock";
+    } else if (playerSelection == "paper") {
       playerScore += 1;
       roundWinner = "player";
-      console.log(roundWinner + " " + "wins");
-    } else if ((playerSelection = "scissors")) {
+      scoreInfo.textContent = "you won !!";
+      scoreDesc.textContent = "paper beats rock";
+    } else if (playerSelection == "scissors") {
       computerScore += 1;
       roundWinner = "computer";
-      console.log(roundWinner + " " + "wins");
+      scoreInfo.textContent = "you lost!";
+      scoreDesc.textContent = "scissors is beaten by rock";
     }
   } else if (computerSelection == "paper") {
     if (playerSelection == "rock") {
       computerScore += 1;
       roundWinner = "computer";
-      console.log(roundWinner + " " + "wins");
-    } else if ((playerSelection = "paper")) console.log("round draw");
-    else if ((playerSelection = "scissors")) {
+      scoreInfo.textContent = "you lost!";
+      scoreDesc.textContent = "rock is beaten by paper";
+    } else if (playerSelection == "paper") {
+      scoreInfo.textContent = "its a tie!";
+      scoreDesc.textContent = "paper ties with paper";
+    } else if (playerSelection == "scissors") {
       playerScore += 1;
       roundWinner = "player";
-      console.log(roundWinner + " " + "wins");
+      scoreInfo.textContent = "you won !!";
+      scoreDesc.textContent = "scissors beat paper";
     }
   } else if (computerSelection == "scissors") {
     if (playerSelection == "rock") {
       playerScore += 1;
       roundWinner = "player";
-      console.log(roundWinner + " " + "wins");
-    } else if ((playerSelection = "paper")) {
+      scoreInfo.textContent = "you won !!";
+      scoreDesc.textContent = "rock beats scissors";
+    } else if (playerSelection == "paper") {
       computerScore += 1;
       roundWinner = "computer";
-      console.log(roundWinner + " " + "wins");
-    } else if ((playerSelection = "scissors")) console.log("round draw");
+      scoreInfo.textContent = "you lost!";
+      scoreDesc.textContent = "paper is beaten by scissors";
+    } else if (playerSelection == "scissors") {
+      console.log("round draw");
+      scoreInfo.textContent = "its a tie!";
+      scoreDesc.textContent = "scissors ties with scissors";
+    }
   }
 
-  console.log(`player score: ${playerScore}, computer score: ${computerScore}`);
-}
-let gameWinner;
-let i = 1;
-function game() {
-  let leader = Math.max(computerScore, playerScore);
-  // for (let i = 1; i < 6; i++) {
-  while (leader < 6) {
-    console.log(`round number : ${i}`);
-    let input = prompt("enter your choice");
-    playerSelection = input.toLowerCase();
-    playRound(getComputerChoice(), playerSelection);
-    i++;
-  }
-
-  if (playerScore == 5) gameWinner = "player";
-  else if (computerScore == 5) gameWinner = "computer";
-  else gameWinner = "draw";
-
-  console.log(`THE WINNER IS ${gameWinner}`);
-  return 0;
+  playerScoreEl.textContent = `player : ${playerScore}`;
+  computerScoreEl.textContent = `computer : ${computerScore}`;
 }
