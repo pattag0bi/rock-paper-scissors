@@ -1,20 +1,68 @@
-function getComputerChoice() {
-  option = Math.trunc(Math.random() * 3) + 1;
-  //console.log(option);
+"use strict";
+const headerEl = document.querySelector(".header");
+const scoreInfo = document.querySelector(".score-info");
+const scoreDesc = document.querySelector(".score-desc");
+const playerWeapon = document.querySelector(".player-weapon");
+const computerWeapon = document.querySelector(".computer-weapon");
+const playerScoreEl = document.querySelector(".player-score");
+const computerScoreEl = document.querySelector(".computer-score");
+const modalEl = document.querySelector(".modal");
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorBtn = document.getElementById("scissor-btn");
 
-  if (option == 1) {
-    parameter = "rock";
-  } else if (option == 2) {
-    parameter = "paper";
-  } else if (option == 3) {
-    parameter = "scissors";
-  }
-
-  return parameter;
-}
 let playerScore;
 let computerScore;
 let roundWinner;
+let playerSelection;
+let computerSelection;
+
+function init() {
+  playerScore = 0;
+  computerScore = 0;
+
+  playerScoreEl.textContent = 0;
+  computerScoreEl.textContent = 0;
+  playerWeapon.textContent = "⍰";
+  computerWeapon.textContent = "⍰";
+
+  modalEl.classList.add("hidden");
+}
+
+function getComputerChoice() {
+  let option = Math.trunc(Math.random() * 3) + 1;
+  //console.log(option);
+
+  if (option == 1) {
+    computerSelection = "rock";
+    computerWeapon.textContent = "🪨";
+  } else if (option == 2) {
+    computerSelection = "paper";
+    computerWeapon.textContent = "📄";
+  } else if (option == 3) {
+    computerSelection = "scissors";
+    computerWeapon.textContent = "✂️";
+  }
+
+  return computerSelection;
+}
+
+rockBtn.addEventListener("click", function () {
+  playerWeapon.textContent = "🪨";
+  playRound(getComputerChoice(), "rock");
+  return playerSelection;
+});
+
+paperBtn.addEventListener("click", function () {
+  playerWeapon.textContent = "📄";
+  playRound(getComputerChoice(), "paper");
+  return playerSelection;
+});
+
+scissorBtn.addEventListener("click", function () {
+  playerWeapon.textContent = "✂️";
+  playRound(getComputerChoice(), "scissors");
+});
 
 function playRound(computerSelection, playerSelection) {
   console.log(
@@ -76,5 +124,3 @@ function game() {
   console.log(`THE WINNER IS ${gameWinner}`);
   return 0;
 }
-
-//console.log(game());
