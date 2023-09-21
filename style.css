@@ -105,3 +105,29 @@ body {
   background-color: black;
   opacity: 0.6;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  color: rgb(235, 221, 24);
+  background-color: rgb(81, 0, 232);
+  font-size: 20px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.fa-github {
+  color: var(--primary-light);
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
+}
