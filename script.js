@@ -33,16 +33,6 @@ function init() {
   hideModal();
 }
 
-function showModal() {
-  modalEl.style.display = "block";
-  overlay.style.display = "block";
-}
-
-function hideModal() {
-  modalEl.style.display = "none";
-  overlay.style.display = "none";
-}
-
 function getComputerChoice() {
   let option = Math.trunc(Math.random() * 3) + 1;
   //console.log(option);
@@ -60,25 +50,6 @@ function getComputerChoice() {
 
   return computerSelection;
 }
-
-rockBtn.addEventListener("click", function () {
-  playerWeapon.textContent = "🪨";
-  playRound(getComputerChoice(), "rock");
-  return playerSelection;
-});
-
-paperBtn.addEventListener("click", function () {
-  playerWeapon.textContent = "📄";
-  playRound(getComputerChoice(), "paper");
-  return playerSelection;
-});
-
-scissorBtn.addEventListener("click", function () {
-  playerWeapon.textContent = "✂️";
-  playRound(getComputerChoice(), "scissors");
-});
-
-init();
 
 function checkWinner(leader) {
   if (leader < 5) {
@@ -100,8 +71,17 @@ function checkWinner(leader) {
   }
 }
 
+function showModal() {
+  modalEl.style.display = "block";
+  overlay.style.display = "block";
+}
+
+function hideModal() {
+  modalEl.style.display = "none";
+  overlay.style.display = "none";
+}
+
 function playRound(computerSelection, playerSelection) {
-  // if (leader < 5) {
   if (computerSelection == "rock") {
     if (playerSelection == "rock") {
       playerScore += 1;
@@ -163,6 +143,23 @@ function playRound(computerSelection, playerSelection) {
   checkWinner(leader);
 }
 
+rockBtn.addEventListener("click", function () {
+  playerWeapon.textContent = "🪨";
+  playRound(getComputerChoice(), "rock");
+  return playerSelection;
+});
+
+paperBtn.addEventListener("click", function () {
+  playerWeapon.textContent = "📄";
+  playRound(getComputerChoice(), "paper");
+  return playerSelection;
+});
+
+scissorBtn.addEventListener("click", function () {
+  playerWeapon.textContent = "✂️";
+  playRound(getComputerChoice(), "scissors");
+});
+
 resetBtn.addEventListener("click", function () {
   init();
 });
@@ -170,3 +167,5 @@ resetBtn.addEventListener("click", function () {
 overlay.addEventListener("click", function () {
   init();
 });
+
+init();
