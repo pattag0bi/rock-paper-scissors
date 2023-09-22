@@ -52,20 +52,20 @@ function getComputerChoice() {
 }
 
 function checkWinner(leader) {
-  if (leader < 5) {
+  if (leader !== 5) {
     return true;
   } else if (leader == 5) {
-    if (computerScore == 5) {
+    if (playerScore == 5 && computerScore == 5) {
+      endGameMessage.textContent = "IT'S A TIE 👔";
+      console.log("its a tie");
+      showModal();
+    } else if (computerScore == 5) {
       endGameMessage.textContent = "YOU LOSE 💩";
       console.log("you lose");
       showModal();
     } else if (playerScore == 5) {
       endGameMessage.textContent = "YOU WIN 😘";
       console.log("you win");
-      showModal();
-    } else if ((playerScore, computerScore == 5)) {
-      endGameMessage.textContent = "IT'S A TIE 👔";
-      console.log("its a tie");
       showModal();
     }
   }
