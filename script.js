@@ -84,7 +84,7 @@ function playRound(computerSelection, playerSelection) {
   leader = Math.max(playerScore, computerScore);
   console.log(leader);
 
-  if (leader < 5) {
+  if (leader < 4) {
     if (computerSelection == "rock") {
       if (playerSelection == "rock") {
         scoreInfo.textContent = "its a tie!";
