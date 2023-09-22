@@ -80,70 +80,83 @@ scissorBtn.addEventListener("click", function () {
 
 init();
 
-function playRound(computerSelection, playerSelection) {
-  leader = Math.max(playerScore, computerScore);
-  console.log(leader);
-
-  if (leader < 4) {
-    if (computerSelection == "rock") {
-      if (playerSelection == "rock") {
-        scoreInfo.textContent = "its a tie!";
-        scoreDesc.textContent = "rock ties with rock";
-      } else if (playerSelection == "paper") {
-        playerScore += 1;
-        roundWinner = "player";
-        scoreInfo.textContent = "you won !!";
-        scoreDesc.textContent = "paper beats rock";
-      } else if (playerSelection == "scissors") {
-        computerScore += 1;
-        roundWinner = "computer";
-        scoreInfo.textContent = "you lost!";
-        scoreDesc.textContent = "scissors is beaten by rock";
-      }
-    } else if (computerSelection == "paper") {
-      if (playerSelection == "rock") {
-        computerScore += 1;
-        roundWinner = "computer";
-        scoreInfo.textContent = "you lost!";
-        scoreDesc.textContent = "rock is beaten by paper";
-      } else if (playerSelection == "paper") {
-        scoreInfo.textContent = "its a tie!";
-        scoreDesc.textContent = "paper ties with paper";
-      } else if (playerSelection == "scissors") {
-        playerScore += 1;
-        roundWinner = "player";
-        scoreInfo.textContent = "you won !!";
-        scoreDesc.textContent = "scissors beat paper";
-      }
-    } else if (computerSelection == "scissors") {
-      if (playerSelection == "rock") {
-        playerScore += 1;
-        roundWinner = "player";
-        scoreInfo.textContent = "you won !!";
-        scoreDesc.textContent = "rock beats scissors";
-      } else if (playerSelection == "paper") {
-        computerScore += 1;
-        roundWinner = "computer";
-        scoreInfo.textContent = "you lost!";
-        scoreDesc.textContent = "paper is beaten by scissors";
-      } else if (playerSelection == "scissors") {
-        console.log("round draw");
-        scoreInfo.textContent = "its a tie!";
-        scoreDesc.textContent = "scissors ties with scissors";
-      }
+function checkWinner(leader) {
+  if (leader < 5) {
+    return true;
+  } else if (leader == 5) {
+    if (computerScore == 5) {
+      endGameMessage.textContent = "YOU LOSE 💩";
+      console.log("you lose");
+      showModal();
+    } else if (playerScore == 5) {
+      endGameMessage.textContent = "YOU WIN 😘";
+      console.log("you win");
+      showModal();
     }
-  } else if (computerScore == 5) {
-    endGameMessage.textContent = "YOU LOSE 💩";
-    console.log("you lose");
-    showModal();
-  } else if (playerScore == 5) {
-    endGameMessage.textContent = "YOU WIN 😘";
-    console.log("you win");
-    showModal();
+  }
+}
+
+function playRound(computerSelection, playerSelection) {
+  // if (leader < 5) {
+  if (computerSelection == "rock") {
+    if (playerSelection == "rock") {
+      playerScore += 1;
+      computerScore += 1;
+      scoreInfo.textContent = "its a tie!";
+      scoreDesc.textContent = "rock ties with rock";
+    } else if (playerSelection == "paper") {
+      playerScore += 1;
+      roundWinner = "player";
+      scoreInfo.textContent = "you won !!";
+      scoreDesc.textContent = "paper beats rock";
+    } else if (playerSelection == "scissors") {
+      computerScore += 1;
+      roundWinner = "computer";
+      scoreInfo.textContent = "you lost!";
+      scoreDesc.textContent = "scissors is beaten by rock";
+    }
+  } else if (computerSelection == "paper") {
+    if (playerSelection == "rock") {
+      computerScore += 1;
+      roundWinner = "computer";
+      scoreInfo.textContent = "you lost!";
+      scoreDesc.textContent = "rock is beaten by paper";
+    } else if (playerSelection == "paper") {
+      playerScore += 1;
+      computerScore += 1;
+      scoreInfo.textContent = "its a tie!";
+      scoreDesc.textContent = "paper ties with paper";
+    } else if (playerSelection == "scissors") {
+      playerScore += 1;
+      roundWinner = "player";
+      scoreInfo.textContent = "you won !!";
+      scoreDesc.textContent = "scissors beat paper";
+    }
+  } else if (computerSelection == "scissors") {
+    if (playerSelection == "rock") {
+      playerScore += 1;
+      roundWinner = "player";
+      scoreInfo.textContent = "you won !!";
+      scoreDesc.textContent = "rock beats scissors";
+    } else if (playerSelection == "paper") {
+      computerScore += 1;
+      roundWinner = "computer";
+      scoreInfo.textContent = "you lost!";
+      scoreDesc.textContent = "paper is beaten by scissors";
+    } else if (playerSelection == "scissors") {
+      playerScore += 1;
+      computerScore += 1;
+      scoreInfo.textContent = "its a tie!";
+      scoreDesc.textContent = "scissors ties with scissors";
+    }
   }
 
   playerScoreEl.textContent = `player : ${playerScore}`;
   computerScoreEl.textContent = `computer : ${computerScore}`;
+
+  leader = Math.max(playerScore, computerScore);
+
+  checkWinner(leader);
 }
 
 resetBtn.addEventListener("click", function () {
