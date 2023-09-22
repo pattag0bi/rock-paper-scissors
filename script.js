@@ -92,6 +92,10 @@ function checkWinner(leader) {
       endGameMessage.textContent = "YOU WIN 😘";
       console.log("you win");
       showModal();
+    } else if ((playerScore, computerScore == 5)) {
+      endGameMessage.textContent = "IT'S A TIE 👔";
+      console.log("its a tie");
+      showModal();
     }
   }
 }
